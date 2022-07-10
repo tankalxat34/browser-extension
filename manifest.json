@@ -1,0 +1,48 @@
+{
+    "incognito": "spanning",
+
+    "name": "Name of Extension",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "author": "tankalxat34",
+
+    "description": "description",
+
+    "browser_action": {
+		"default_icon": "src/icons/default.png",
+		"default_title": "name of Extension",
+		"default_popup": "pages/popup/popup.html"
+	},
+
+	"web_accessible_resources": [ "*.css", "*.html", "*.json" ],
+
+    "icons": { 
+		"16": "src/icons/default.png",
+		"48": "src/icons/default.png",
+		"128": "src/icons/default.png" 
+    },
+
+    "background": {
+	    "scripts": [ 
+            "src/menu.js"
+	    ]
+	},
+
+    "content_scripts": [
+		{
+    		"matches": [
+    			"*://*"
+    		],
+    		"js": [ "src/js/main.js" ],
+    		"run_at" : "document_idle"
+    	}
+    ],
+
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "webRequest",
+        "webRequestBlocking",
+        "<all_urls>"
+    ]
+}
